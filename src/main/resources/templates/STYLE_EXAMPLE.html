@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Players</title>
+    <div th:insert="fragments/base :: assetsHead"></div>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<div class="app-container">
+    <div class="app-header text-center">
+        <h2>Players</h2>
+        <p class="text-muted">Showing <span th:text="${total}">0</span> players</p>
+    </div>
+
+    <div class="players-card">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="player : ${players}">
+                    <th scope="row" th:text="${player.id}">1</th>
+                    <td th:text="${player.name}">Name</td>
+                    <td th:text="${player.email}">email@example.com</td>
+                    <td>
+                        <span th:if="${player.id == 1}" class="status-badge-online">Online</span>
+                        <span th:unless="${player.id == 1}" class="status-badge-offline">Offline</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:insert="fragments/base :: assetsScripts"></div>
+</body>
+</html>
