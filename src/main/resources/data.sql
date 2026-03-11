@@ -1,0 +1,22 @@
+
+INSERT INTO products (name, description, price, category, in_stock) VALUES
+('Pixel Mouse', 'High precision gaming mouse', 49.99, 'Electronics', 120),
+('Pixel Keyboard', 'Mechanical keyboard with RGB lighting', 89.99, 'Electronics', 75),
+('Wireless Earbuds', 'Bluetooth earbuds with noise cancellation', 59.99, 'Electronics', 150),
+('Gaming Headset', 'Surround sound headset with mic', 79.99, 'Electronics', 80),
+('USB-C Hub', 'Multiport adapter with HDMI and USB 3.0', 34.99, 'Electronics', 100),
+('External SSD 1TB', 'Portable solid state drive for fast storage', 129.99, 'Electronics', 60),
+('Webcam HD', '1080p webcam for streaming and meetings', 49.99, 'Electronics', 90),
+('Mechanical Keyboard', 'Customizable RGB mechanical keyboard', 99.99, 'Electronics', 50),
+('Gaming Mouse Pad', 'Extended mouse pad with non-slip base', 19.99, 'Electronics', 200),
+('Smartphone Stand', 'Adjustable phone stand for desk', 14.99, 'Electronics', 180),
+('Laptop Sleeve', 'Protective sleeve for 13-inch laptops', 24.99, 'Accessories', 120),
+('Charging Dock', 'Wireless charging dock for multiple devices', 39.99, 'Accessories', 75),
+('Portable Charger', '10000mAh power bank for phones', 29.99, 'Accessories', 200),
+('Bluetooth Speaker', 'Compact speaker with powerful sound', 49.99, 'Electronics', 150),
+('Smartwatch', 'Fitness tracking smartwatch with notifications', 199.99, 'Electronics', 80),
+('HDMI Cable', '6ft high-speed HDMI cable', 12.99, 'Accessories', 300),
+('USB Flash Drive 128GB', 'High-speed portable USB storage', 24.99, 'Accessories', 250),
+('Laptop Cooling Pad', 'USB cooling pad for laptops', 29.99, 'Accessories', 90),
+('Mechanical Gaming Keypad', 'One-handed keypad for gaming', 59.99, 'Electronics', 40),
+('Noise Cancelling Headphones', 'Over-ear headphones with ANC', 129.99, 'Electronics', 70);
