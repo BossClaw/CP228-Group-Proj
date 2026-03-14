@@ -101,9 +101,10 @@
             <td th:text="${product.inStock}">0</td>
             <!-- FORMAT TIMESTAMP -->
             <td th:text="${#temporals.format(product.createdAt, 'MMM dd, yyyy')}">Date</td>
-            <!-- DELETE FORM — POSTS TO DELETE ENDPOINT WITH PRODUCT ID -->
+            <!-- EDIT AND DELETE ACTIONS PER ROW -->
             <td>
-                <form method="post" th:action="@{/products/delete/{id}(id=${product.id})}">
+                <a th:href="@{/edit-product/{id}(id=${product.id})}" class="btn btn-warning btn-sm me-1">Edit</a>
+                <form method="post" th:action="@{/products/delete/{id}(id=${product.id})}" class="d-inline">
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>
