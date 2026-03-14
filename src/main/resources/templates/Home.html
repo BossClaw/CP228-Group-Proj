@@ -1,21 +1,57 @@
-<!-- TEMPORARY -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Pixel Vault</title>
     <div th:insert="fragments/base :: assetsHead"></div>
 </head>
 <body>
 
-    <nav th:replace="fragments/navbar :: navbar"></nav>
-    <div class="app-container text-center">
-        <div class="players-card">
-            <h2>Welcome to the Home Page</h2>
-            <p class="text-muted">Use the navigation above to browse the site.</p>
-        </div>
-    </div>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 
-    <div th:insert="fragments/base :: assetsScripts"></div>
+<!-- HERO BANNER -->
+<div class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Pixel Vault</h1>
+        <p class="lead mt-3">
+            Your one-stop eCommerce store for Videogame Memorabilia.<br>
+            Browse consoles, accessories, collectibles, and more.
+        </p>
+        <!-- PRIMARY CTA -->
+        <a th:href="@{/products}" class="btn btn-primary btn-lg mt-3">Browse Products</a>
+    </div>
+</div>
+
+<!-- QUICK ACTION CARDS -->
+<div class="container mt-5">
+    <div class="row g-4 justify-content-center">
+
+        <!-- BROWSE CARD -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Browse Products</h5>
+                    <p class="card-text text-muted">Search, filter, and sort our full catalog of gaming memorabilia.</p>
+                    <a th:href="@{/products}" class="btn btn-outline-primary">View All Products</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADD PRODUCT CARD -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Add a Product</h5>
+                    <p class="card-text text-muted">List a new item in the Pixel Vault catalog.</p>
+                    <a th:href="@{/create-product}" class="btn btn-outline-success">Add Product</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:insert="fragments/base :: assetsScripts"></div>
+
 </body>
 </html>
