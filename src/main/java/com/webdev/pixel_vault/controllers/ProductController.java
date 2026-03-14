@@ -1,6 +1,9 @@
 package com.webdev.pixel_vault.controllers;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -39,12 +42,17 @@ public class ProductController {
 
         Page<Product> productPage;
 
-        if(search!=null && !search.isEmpty()){
-            productPage = productService.findProductByName(search, pageable);
-        }else{
-
+        if (search != null && !search.isEmpty()) {
+            try {
+                int searchId = Integer.parseInt(search.trim());
+                Product found = productService.getProductById(searchId);
+                List<Product> result = found != null ? List.of(found) : List.of();
+                productPage = new PageImpl<>(result, pageable, result.size());
+            } catch (NumberFormatException e) {
+                productPage = productService.findProductByName(search, pageable);
+            }
+        } else {
             productPage = productService.getAllProductsPageable(pageable);
-
         }
 
         model.addAttribute("products", productPage.getContent());
