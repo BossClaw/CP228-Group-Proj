@@ -85,6 +85,7 @@
             <th>
                 <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='createdAt',direction=${direction=='ASC'?'DESC':'ASC'})}">Created</a>
             </th>
+            <th>Actions</th>
         </tr>
         </thead>
 
@@ -100,10 +101,16 @@
             <td th:text="${product.inStock}">0</td>
             <!-- FORMAT TIMESTAMP -->
             <td th:text="${#temporals.format(product.createdAt, 'MMM dd, yyyy')}">Date</td>
+            <!-- DELETE FORM — POSTS TO DELETE ENDPOINT WITH PRODUCT ID -->
+            <td>
+                <form method="post" th:action="@{/products/delete/{id}(id=${product.id})}">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
         </tr>
 
         <tr th:if="${products.isEmpty()}">
-            <td colspan="7" class="text-center">No products found</td>
+            <td colspan="8" class="text-center">No products found</td>
         </tr>
 
         </tbody>

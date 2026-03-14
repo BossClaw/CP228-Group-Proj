@@ -10,6 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webdev.pixel_vault.models.Product;
@@ -70,5 +72,12 @@ public class ProductController {
         model.addAttribute("endIndex", Math.min((page+1)*size,(int)productPage.getTotalElements()));
 
         return "Products";
+    }
+
+    // DELETE PRODUCT BY ID, REDIRECT BACK TO LIST
+    @PostMapping("/products/delete/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        productService.deleteProduct(id);
+        return "redirect:/products";
     }
 }
