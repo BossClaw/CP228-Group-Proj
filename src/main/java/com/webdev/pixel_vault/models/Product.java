@@ -1,5 +1,10 @@
 package com.webdev.pixel_vault.models;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,5 +44,10 @@ public class Product {
     @NotNull(message="Quantity required")
     @Min(value=0, message="Cannot be negative")
     private int inStock;
+
+    // AUTO-SET ON INSERT, NEVER MODIFIED
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
 }

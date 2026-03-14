@@ -65,37 +65,45 @@
 
         <thead>
         <tr>
+            <!-- SORTABLE COLUMN HEADERS -->
             <th>
-                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='name',direction=${direction=='ASC'?'DESC':'ASC'})}">
-                    Name
-                </a>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='id',direction=${direction=='ASC'?'DESC':'ASC'})}">ID</a>
             </th>
-
             <th>
-                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='price',direction=${direction=='ASC'?'DESC':'ASC'})}">
-                    Price
-                </a>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='name',direction=${direction=='ASC'?'DESC':'ASC'})}">Name</a>
             </th>
-
+            <th>Description</th>
             <th>
-                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='id',direction=${direction=='ASC'?'DESC':'ASC'})}">
-                    ID
-                </a>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='category',direction=${direction=='ASC'?'DESC':'ASC'})}">Category</a>
+            </th>
+            <th>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='price',direction=${direction=='ASC'?'DESC':'ASC'})}">Price</a>
+            </th>
+            <th>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='inStock',direction=${direction=='ASC'?'DESC':'ASC'})}">In Stock</a>
+            </th>
+            <th>
+                <a th:href="@{/products(search=${search},page=${currentPage},size=${size},sort='createdAt',direction=${direction=='ASC'?'DESC':'ASC'})}">Created</a>
             </th>
         </tr>
         </thead>
 
-
         <tbody>
 
         <tr th:each="product : ${products}">
-            <td th:text="${product.name}">Product</td>
-            <td th:text="${product.price}">0</td>
             <td th:text="${product.id}">1</td>
+            <td th:text="${product.name}">Product</td>
+            <!-- TRUNCATE LONG DESCRIPTIONS -->
+            <td th:text="${#strings.abbreviate(product.description, 50)}">Description</td>
+            <td th:text="${product.category}">Category</td>
+            <td th:text="'$' + ${product.price}">0.00</td>
+            <td th:text="${product.inStock}">0</td>
+            <!-- FORMAT TIMESTAMP -->
+            <td th:text="${#temporals.format(product.createdAt, 'MMM dd, yyyy')}">Date</td>
         </tr>
 
         <tr th:if="${products.isEmpty()}">
-            <td colspan="3" class="text-center">No products found</td>
+            <td colspan="7" class="text-center">No products found</td>
         </tr>
 
         </tbody>
