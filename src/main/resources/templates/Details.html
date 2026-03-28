@@ -14,7 +14,10 @@
         <div class="col-md-5">
 
             <h2 class="mb-1">My Profile</h2>
-            <p class="text-muted mb-4">Logged in as: <strong th:text="${username}"></strong></p>
+            <p class="text-muted mb-1">Logged in as: <strong th:text="${username}"></strong></p>
+            <p class="mb-4">Role: <span class="badge"
+                th:classappend="${role == 'ADMIN'} ? 'bg-danger' : (${role == 'STAFF'} ? 'bg-primary' : 'bg-secondary')"
+                th:text="${role}"></span></p>
 
             <hr />
 
