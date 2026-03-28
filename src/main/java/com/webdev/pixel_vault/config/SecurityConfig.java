@@ -44,7 +44,6 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // CSRF disabled globally — ignoringRequestMatchers not needed
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/register", "/login").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/*.css", "/*.js").permitAll()
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
