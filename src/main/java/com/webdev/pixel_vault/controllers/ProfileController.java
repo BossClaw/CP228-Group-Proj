@@ -28,7 +28,12 @@ public class ProfileController {
 
     @GetMapping
     public String profilePage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        model.addAttribute("username", userDetails.getUsername());
+        String username = userDetails.getUsername();
+        model.addAttribute("username", username);
+
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+        model.addAttribute("role", user.getRole());
         return "Details";
     }
 
@@ -45,6 +50,8 @@ public class ProfileController {
 
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+
+        model.addAttribute("role", user.getRole());
 
         if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
             model.addAttribute("error", "Current password is incorrect.");

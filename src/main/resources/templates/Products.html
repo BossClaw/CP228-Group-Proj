@@ -1,7 +1,7 @@
 <!-- Temporary -->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
@@ -103,10 +103,12 @@
             <td th:text="${#temporals.format(product.createdAt, 'MMM dd, yyyy')}">Date</td>
             <!-- EDIT AND DELETE ACTIONS PER ROW -->
             <td>
-                <a th:href="@{/edit-product/{id}(id=${product.id})}" class="btn btn-warning btn-sm me-1">Edit</a>
-                <form method="post" th:action="@{/products/delete/{id}(id=${product.id})}" class="d-inline">
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                </form>
+                <span sec:authorize="hasAnyRole('ADMIN', 'STAFF')">
+                    <a th:href="@{/edit-product/{id}(id=${product.id})}" class="btn btn-warning btn-sm me-1">Edit</a>
+                    <form method="post" th:action="@{/products/delete/{id}(id=${product.id})}" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </span>
             </td>
         </tr>
 
