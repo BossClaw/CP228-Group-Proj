@@ -47,7 +47,7 @@ public class SecurityConfig {
                         .requestMatchers("/styles.css").permitAll()
                         .requestMatchers("/h2-console/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/edit-product/**", "/products/delete/**").hasAnyRole("ADMIN", "STAFF")
+                        .requestMatchers("/create-product/**", "/edit-product/**", "/products/delete/**").hasAnyRole("ADMIN", "STAFF")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -56,6 +56,9 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .logout(logout -> logout.logoutSuccessUrl("/login"))
+                .exceptionHandling(ex -> ex
+                        .accessDeniedPage("/login")
+                )
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin())
                 );
