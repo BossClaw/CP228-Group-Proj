@@ -39,9 +39,9 @@ The H2 console is available at `http://localhost:8080/h2-console`
 
 ## Team Contributions
 
-|  Member   |    Contributions             |
-|-----------|------------------------------|
-|  Jasmine  | Lead developer               |
-|  Darryl   | Secondary developer, Testing |
-| Clarance  | Co-project Manager           |
-|   Nour    | Unavailable                  |
+|  Member   |        Contributions              |
+|-----------|-----------------------------------|
+|  Jasmine  | Co-project Manager, Lead developer|               |
+|  Darryl   | Secondary developer, Testing      |
+| Clarance  | Co-project Manager                |
+|   Nour    | Unavailable                       |
