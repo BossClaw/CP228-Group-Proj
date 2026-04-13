@@ -28,3 +28,4 @@ services:
 
 volumes:
   mysql_data:
+    name: pixelvault_mysql_data
