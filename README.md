@@ -8,6 +8,12 @@ An e-commerce product management application built with Spring Boot, Thymeleaf, 
 - Admin panel for managing products (create, edit, delete)
 - Role-based access control (admin vs regular user)
 
+## How to Run Quick Start
+This repo contains two Quick Start .bat files
+Click on `run-dev.bat` or type it in a terminal to run in DEV mode (H2)
+Click on `run-qa.bat` or type it in a terminal to run in QA mode (MySQL)
+Click on `run-clear.bat` or type it in a terminal to clear the containers and volumes
+
 ## How to Run with Docker (QA Mode)
 
 ### Prerequisites
@@ -16,14 +22,14 @@ An e-commerce product management application built with Spring Boot, Thymeleaf, 
 
 ### Steps
 1. Build the application jar:
-mvn package -DskipTests
+`mvn package -DskipTests`
 2. Start the application with Docker Compose:
-docker-compose up --build
+`docker-compose up --build`
 3. Open your browser and go to: `http://localhost:8080`
 4. To stop: `docker-compose down`
 
 To remove saved data as well:
-docker-compose down -v
+`docker-compose down -v`
 
 ## How to Run in Development Mode (H2)
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
@@ -39,9 +45,9 @@ The H2 console is available at `http://localhost:8080/h2-console`
 
 ## Team Contributions
 
-|  Member   |        Contributions              |
-|-----------|-----------------------------------|
-|  Jasmine  | Co-project Manager, Lead developer|               |
-|  Darryl   | Secondary developer, Testing      |
-| Clarance  | Co-project Manager                |
-|   Nour    | Unavailable                       |
+|  Member   |        Contributions               |
+|-----------|------------------------------------|
+|  Jasmine  | Co-project Manager, Lead developer | 
+|  Darryl   | Secondary developer, Testing       |
+| Clarance  | Co-project Manager, Testing        |
+|   Nour    | Unavailable                        |
