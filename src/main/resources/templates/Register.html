@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Register – Pixel Vault</title>
     <div th:insert="fragments/base :: assetsHead"></div>
 </head>
+
 <body>
 
-<nav th:replace="fragments/navbar :: navbar"></nav>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
 
-            <h2 class="mb-4 text-center">Create Account</h2>
+                <h2 class="mb-4 text-center">Create Account</h2>
 
-            <!-- SERVER-SIDE VALIDATION ERROR -->
-            <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
+                <!-- SERVER-SIDE VALIDATION ERROR -->
+                <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
 
-            <!-- REGISTER FORM -->
-            <form method="post" th:action="@{/register}" th:object="${user}">
+                <!-- REGISTER FORM -->
+                <form method="post" th:action="@{/register}" th:object="${user}">
 
-                <div class="mb-3">
-                    <label class="form-label" for="username">Username</label>
-                    <input type="text" id="username" class="form-control" th:field="*{username}"
-                           placeholder="Choose a username" required />
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" id="username" class="form-control" th:field="*{username}"
+                            placeholder="Choose a username" required />
+                    </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" class="form-control" th:field="*{password}"
-                           placeholder="At least 6 characters" required minlength="6" />
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-control" th:field="*{password}"
+                            placeholder="At least 6 characters" required minlength="6" />
+                    </div>
 
-                <button type="submit" class="btn btn-success w-100">Register</button>
+                    <button type="submit" class="btn btn-success w-100">Register</button>
 
-            </form>
+                </form>
 
-            <p class="mt-3 text-center">
-                Already have an account? <a th:href="@{/login}">Login here</a>
-            </p>
+                <p class="mt-3 text-center">
+                    Already have an account? <a th:href="@{/login}">Login here</a>
+                </p>
 
+            </div>
         </div>
     </div>
-</div>
 
-<div th:insert="fragments/base :: assetsScripts"></div>
+    <div th:insert="fragments/base :: assetsScripts"></div>
 
 </body>
+
 </html>
