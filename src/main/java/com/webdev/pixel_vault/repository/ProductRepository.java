@@ -11,4 +11,6 @@ import com.webdev.pixel_vault.models.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     Page<Product> findByNameContainingIgnoringCase(String name, Pageable pageable);
 
+    Page<Product> findByIdContaining(int id, Pageable pageable);
+
 }
