@@ -35,10 +35,6 @@ public class ProductService {
         return productRepository.findByNameContainingIgnoringCase(name,page);
     }
 
-    public Page<Product> getProductByIdContaining(int id, Pageable pageable){
-        return productRepository.findByIdContaining(id, pageable);
-    }
-
     public boolean existsProduct(int id) {
         return productRepository.existsById(id);
     }

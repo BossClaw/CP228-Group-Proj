@@ -1,37 +1,357 @@
-:root{
-    --brand:#0d6efd;
+/* =============================================
+   PIXEL VAULT — RETRO SCI-FI THEME
+   ============================================= */
+
+/* COLOR PALETTE + GLOW TOKENS */
+:root {
+    --brand:       #00f5ff;
+    --neon-green:  #39ff14;
+    --neon-pink:   #ff2d78;
+    --neon-yellow: #ffd600;
+    --bg:          #07070f;
+    --bg-card:     #0d0d1a;
+    --bg-surface:  #12122a;
+    --text-primary:#c8d8ff;
+    --text-muted:  #556688;
+    --glow-cyan:   0 0 8px #00f5ff, 0 0 24px rgba(0,245,255,0.3);
+    --glow-pink:   0 0 8px #ff2d78, 0 0 24px rgba(255,45,120,0.3);
+    --glow-green:  0 0 8px #39ff14, 0 0 24px rgba(57,255,20,0.3);
+    --glow-yellow: 0 0 8px #ffd600, 0 0 24px rgba(255,214,0,0.3);
 }
-body{
-    background:#f8f9fa;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+
+/* BASE */
+body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Share Tech Mono', 'Courier New', monospace;
 }
-.app-container{
-    max-width:960px;
-    margin:40px auto;
+
+/* SUBTLE CRT SCANLINE OVERLAY */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 245, 255, 0.018) 2px,
+        rgba(0, 245, 255, 0.018) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
 }
-.app-header{
-    margin-bottom:20px;
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--brand);
+    text-shadow: var(--glow-cyan);
 }
-.players-card{
-    padding:20px;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+
+/* LINKS */
+a { color: var(--brand); }
+a:hover { color: #fff; text-shadow: var(--glow-cyan); }
+
+/* TEXT UTILITIES */
+.text-muted { color: var(--text-muted) !important; }
+.lead { color: var(--text-primary); }
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+    background: var(--bg-card) !important;
+    border-bottom: 1px solid var(--brand);
+    box-shadow: var(--glow-cyan);
 }
-.status-badge-online{
-    background: #198754;
+
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--brand) !important;
+    text-shadow: var(--glow-cyan);
+}
+
+.nav-link {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-primary) !important;
+    letter-spacing: 1px;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--brand) !important;
+    text-shadow: var(--glow-cyan);
+}
+
+/* NAVBAR SEARCH INPUT */
+.navbar .form-control {
+    font-size: 0.85rem;
+}
+
+/* =============================================
+   HERO SECTION (HOME PAGE)
+   ============================================= */
+.bg-dark {
+    background: var(--bg-card) !important;
+    border-bottom: 1px solid var(--brand);
+    box-shadow: 0 4px 40px rgba(0, 245, 255, 0.15);
+}
+
+.display-4 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--brand);
+    text-shadow: var(--glow-cyan);
+}
+
+/* =============================================
+   CARDS
+   ============================================= */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--brand) !important;
+    box-shadow: var(--glow-cyan);
+    color: var(--text-primary);
+}
+
+.card-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--brand);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.card-text { color: var(--text-muted); }
+
+/* =============================================
+   TABLE
+   ============================================= */
+.table {
+    color: var(--text-primary);
+    border-color: var(--bg-surface);
+}
+
+/* COLUMN HEADERS */
+.table thead th {
+    background: var(--bg-surface);
+    color: var(--brand);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--brand);
+    text-shadow: var(--glow-cyan);
+}
+
+.table thead th a {
+    color: var(--brand);
+    text-decoration: none;
+}
+
+.table thead th a:hover {
     color: #fff;
-    padding:4px 8px;
-    border-radius:12px;
-    font-size:0.85rem;
+    text-shadow: var(--glow-cyan);
 }
-.status-badge-offline{
-    background: #dc3545;
-    color:#fff;
-    padding:4px 8px;
-    border-radius:12px;
-    font-size:0.85rem;
+
+/* ODD ROWS */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background: var(--bg-surface);
+    color: var(--text-primary);
 }
-.navbar-brand{
-    font-weight:700;
+
+/* EVEN ROWS */
+.table-striped > tbody > tr:nth-of-type(even) > * {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* ROW HOVER */
+.table tbody tr:hover > td {
+    background: #1a1a3a;
+    color: #fff;
+}
+
+/* =============================================
+   FORMS
+   ============================================= */
+.form-control, .form-select {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--brand) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.form-control:focus, .form-select:focus {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--glow-cyan) !important;
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+.form-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: var(--brand);
+}
+
+/* VALIDATION ERROR */
+.text-danger { color: var(--neon-pink) !important; }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
+/* PRIMARY — CYAN */
+.btn-primary {
+    background: transparent !important;
+    border: 1px solid var(--brand) !important;
+    color: var(--brand) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    box-shadow: var(--glow-cyan);
+    transition: all 0.2s;
+}
+.btn-primary:hover {
+    background: var(--brand) !important;
+    color: var(--bg) !important;
+}
+
+/* SECONDARY — MUTED */
+.btn-secondary {
+    background: transparent !important;
+    border: 1px solid var(--text-muted) !important;
+    color: var(--text-muted) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+}
+.btn-secondary:hover {
+    border-color: var(--text-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* DANGER — PINK (DELETE) */
+.btn-danger {
+    background: transparent !important;
+    border: 1px solid var(--neon-pink) !important;
+    color: var(--neon-pink) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    box-shadow: var(--glow-pink);
+}
+.btn-danger:hover {
+    background: var(--neon-pink) !important;
+    color: var(--bg) !important;
+}
+
+/* WARNING — YELLOW (EDIT) */
+.btn-warning {
+    background: transparent !important;
+    border: 1px solid var(--neon-yellow) !important;
+    color: var(--neon-yellow) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    box-shadow: var(--glow-yellow);
+}
+.btn-warning:hover {
+    background: var(--neon-yellow) !important;
+    color: var(--bg) !important;
+}
+
+/* OUTLINE PRIMARY */
+.btn-outline-primary {
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+}
+.btn-outline-primary:hover {
+    background: var(--brand) !important;
+    color: var(--bg) !important;
+    box-shadow: var(--glow-cyan);
+}
+
+/* OUTLINE SUCCESS — GREEN */
+.btn-outline-success {
+    border-color: var(--neon-green) !important;
+    color: var(--neon-green) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+}
+.btn-outline-success:hover {
+    background: var(--neon-green) !important;
+    color: var(--bg) !important;
+    box-shadow: var(--glow-green);
+}
+
+/* OUTLINE SECONDARY — PAGINATION */
+.btn-outline-secondary {
+    border-color: var(--text-muted) !important;
+    color: var(--text-muted) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+}
+.btn-outline-secondary:hover {
+    background: transparent !important;
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+}
+
+/* OUTLINE LIGHT — NAVBAR SEARCH */
+.btn-outline-light {
+    border-color: var(--brand) !important;
+    color: var(--brand) !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+.btn-outline-light:hover {
+    background: var(--brand) !important;
+    color: var(--bg) !important;
+}
+
+/* =============================================
+   LEGACY CLASSES (STYLE_EXAMPLE COMPAT)
+   ============================================= */
+.app-container { max-width: 960px; margin: 40px auto; }
+.app-header    { margin-bottom: 20px; }
+
+.players-card {
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--brand);
+    border-radius: 8px;
+    box-shadow: var(--glow-cyan);
+}
+
+.status-badge-online {
+    background: transparent;
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    box-shadow: var(--glow-green);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+.status-badge-offline {
+    background: transparent;
+    color: var(--neon-pink);
+    border: 1px solid var(--neon-pink);
+    box-shadow: var(--glow-pink);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
 }
